@@ -14,11 +14,11 @@ export function IntentLink({ module, featured = false, className, style }: Inten
     <Link
       href={module.route}
       className={cn(
-        'group relative flex flex-col gap-3 rounded-xl border border-border bg-surface p-5',
+        'group relative flex flex-col gap-4 rounded-xl border border-border bg-surface p-6',
         'transition-all duration-300 ease-out',
-        'hover:border-accent hover:shadow-card-hover hover:-translate-y-0.5',
+        'hover:border-accent/50 hover:shadow-card-hover hover:-translate-y-0.5',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface',
-        featured && 'md:col-span-2 md:p-6',
+        featured && 'md:col-span-2 md:p-7',
         className
       )}
       style={style}
@@ -26,9 +26,9 @@ export function IntentLink({ module, featured = false, className, style }: Inten
       {/* Icon */}
       <div
         className={cn(
-          'flex h-10 w-10 items-center justify-center rounded-lg text-2xl',
+          'flex h-11 w-11 items-center justify-center rounded-lg text-2xl',
           'bg-accent-muted text-accent',
-          featured && 'h-12 w-12 text-3xl md:h-14 md:w-14'
+          featured && 'h-12 w-12 text-3xl md:h-16 md:w-16'
         )}
       >
         {module.icon}
@@ -73,7 +73,7 @@ export function IntentLink({ module, featured = false, className, style }: Inten
       <div
         className={cn(
           'pointer-events-none absolute inset-0 rounded-xl opacity-0 transition-opacity duration-300',
-          'bg-[radial-gradient(ellipse_at_top_right,rgb(var(--accent)/0.08),transparent_70%)]',
+          'bg-[radial-gradient(ellipse_at_top_right,rgb(var(--accent)/0.05),transparent_70%)]',
           'group-hover:opacity-100'
         )}
         aria-hidden

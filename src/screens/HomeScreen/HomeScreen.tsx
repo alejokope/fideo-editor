@@ -1,31 +1,29 @@
-'use client'
-
+'use client';
 import { cn } from '@/lib/cn';
 import { IntentLink } from './IntentLink';
 import { getModulesByKind, type ModuleKind } from '@/app/modules';
-
 
 const KIND_LABELS: Record<ModuleKind, string> = {
   primary: 'Principal',
   library: 'Biblioteca',
   admin: 'Administración',
 };
+
 const KIND_DESCRIPTIONS: Record<ModuleKind, string> = {
   primary: 'Herramientas principales de creación',
   library: 'Recursos y plantillas disponibles',
   admin: 'Gestión y configuración del sistema',
 };
-
 function HeroSection() {
   return (
-    <section className="relative flex flex-col items-center justify-center py-16 md:py-24">
+    <section className="relative flex flex-col items-center justify-center py-12 md:py-16">
       {/* Background grid + gradient */}
       <div
         className="pointer-events-none absolute inset-0 z-0"
         aria-hidden
         style={{
           backgroundImage:
-            'linear-gradient(rgb(var(--border) / 0.25) 1px, transparent 1px), linear-gradient(90deg, rgb(var(--border) / 0.25) 1px, transparent 1px)',
+            'linear-gradient(rgb(var(--border) / 0.12) 1px, transparent 1px), linear-gradient(90deg, rgb(var(--border) / 0.12) 1px, transparent 1px)',
           backgroundSize: '40px 40px',
           maskImage: 'radial-gradient(ellipse 80% 70% at 50% 0%, black 40%, transparent 100%)',
           WebkitMaskImage: 'radial-gradient(ellipse 80% 70% at 50% 0%, black 40%, transparent 100%)',
@@ -36,7 +34,7 @@ function HeroSection() {
         aria-hidden
         style={{
           background:
-            'radial-gradient(ellipse 60% 50% at 50% 0%, rgb(var(--accent) / 0.12), transparent 70%)',
+            'radial-gradient(ellipse 60% 50% at 50% 0%, rgb(var(--accent) / 0.06), transparent 70%)',
         }}
       />
 
@@ -49,12 +47,12 @@ function HeroSection() {
           )}
           style={{ animationDelay: '0ms' }}
         >
-          ✦ Plataforma de diseño generativo
+          Plataforma de diseño generativo
         </div>
 
         {/* Title */}
         <h1
-          className="animate-slide-up text-balance text-5xl font-bold tracking-tight text-content md:text-7xl"
+          className="animate-slide-up text-balance text-4xl font-bold tracking-tight text-content md:text-6xl"
           style={{ animationDelay: '80ms' }}
         >
           <span className="bg-gradient-to-r from-content via-content to-accent bg-clip-text text-transparent">
@@ -75,14 +73,14 @@ function HeroSection() {
           className="animate-slide-up flex flex-wrap items-center justify-center gap-3"
           style={{ animationDelay: '240ms' }}
         >
-          {/* Primary CTA — prominent with glow */}
+          {/* Primary CTA — subtle glow */}
           <a
             href="/editor"
             className={cn(
               'relative inline-flex items-center gap-2 rounded-xl px-6 py-3',
               'bg-accent text-accent-foreground font-semibold text-base',
-              'shadow-glow transition-all duration-300',
-              'hover:brightness-110 hover:-translate-y-0.5 hover:shadow-[0_0_30px_-5px_rgb(var(--accent)/0.5)]',
+              'transition-all duration-300',
+              'hover:brightness-110 hover:-translate-y-0.5 hover:shadow-[0_0_20px_-5px_rgb(var(--accent)/0.3)]',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface'
             )}
           >
@@ -125,8 +123,6 @@ interface ModuleSectionProps {
 
 function ModuleSection({ kind, animationDelay }: ModuleSectionProps) {
   const sectionModules = getModulesByKind(kind);
-
-
   return (
     <section
       className="animate-slide-up"
@@ -175,14 +171,14 @@ export function HomeScreen() {
         }}
       />
 
+
       <div className="relative z-10 mx-auto max-w-6xl px-4 pb-20">
         <HeroSection />
 
-
-        <div className="mt-8 flex flex-col gap-12">
-          <ModuleSection kind="primary" animationDelay={320} />
-          <ModuleSection kind="library" animationDelay={400} />
-          <ModuleSection kind="admin" animationDelay={480} />
+        <div className="mt-10 flex flex-col gap-14">
+          <ModuleSection kind="primary" animationDelay={200} />
+          <ModuleSection kind="library" animationDelay={280} />
+          <ModuleSection kind="admin" animationDelay={360} />
         </div>
       </div>
     </main>

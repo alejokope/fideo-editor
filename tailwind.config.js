@@ -17,6 +17,7 @@ export default {
           DEFAULT: 'rgb(var(--content) / <alpha-value>)',
           secondary: 'rgb(var(--content-secondary) / <alpha-value>)',
           muted: 'rgb(var(--content-muted) / <alpha-value>)',
+          tertiary: 'rgb(var(--content-tertiary) / <alpha-value>)',
         },
         accent: {
           DEFAULT: 'rgb(var(--accent) / <alpha-value>)',
@@ -39,10 +40,10 @@ export default {
         },
       },
       boxShadow: {
-        panel: '0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.06)',
-        'panel-lg': '0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.06)',
-        glow: '0 0 20px -5px rgb(var(--accent) / 0.4)',
-        'card-hover': '0 4px 20px -4px rgb(0 0 0 / 0.12), 0 2px 8px -2px rgb(0 0 0 / 0.08)',
+        panel: '0 1px 2px 0 rgb(0 0 0 / 0.04)',
+        'panel-lg': '0 4px 12px -2px rgb(0 0 0 / 0.06)',
+        glow: '0 0 16px -4px rgb(var(--accent) / 0.3)',
+        'card-hover': '0 2px 12px -2px rgb(0 0 0 / 0.08)',
       },
       fontFamily: {
         sans: ['IBM Plex Sans', 'system-ui', 'sans-serif'],
@@ -63,10 +64,10 @@ export default {
         },
         'ai-fab-pulse': {
           '0%, 100%': { boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.08)' },
-          '50%': { boxShadow: '0 0 0 8px rgb(79 70 229 / 0.18), 0 10px 15px -3px rgb(0 0 0 / 0.1)' },
+          '50%': { boxShadow: '0 0 0 6px rgb(79 70 229 / 0.12), 0 10px 15px -3px rgb(0 0 0 / 0.08)' },
         },
         'slide-up': {
-          from: { opacity: '0', transform: 'translateY(16px)' },
+          from: { opacity: '0', transform: 'translateY(10px)' },
           to: { opacity: '1', transform: 'translateY(0)' },
         },
         'fade-in': {
@@ -74,7 +75,7 @@ export default {
           to: { opacity: '1' },
         },
         'scale-in': {
-          from: { opacity: '0', transform: 'scale(0.95)' },
+          from: { opacity: '0', transform: 'scale(0.98)' },
           to: { opacity: '1', transform: 'scale(1)' },
         },
         shimmer: {
@@ -83,14 +84,14 @@ export default {
         },
       },
       animation: {
-        'ai-ring': 'ai-ring 1.6s ease-out infinite',
-        'ai-ring-delayed': 'ai-ring 1.6s ease-out 0.45s infinite',
-        'ai-fade': 'ai-fade 0.28s ease-out',
-        'ai-panel-in': 'ai-panel-in 0.32s ease-out',
-        'ai-fab-pulse': 'ai-fab-pulse 1.4s ease-in-out infinite',
-        'slide-up': 'slide-up 0.35s ease-out',
-        'fade-in': 'fade-in 0.25s ease-out',
-        'scale-in': 'scale-in 0.25s ease-out',
+        'ai-ring': 'ai-ring 1.4s ease-out infinite',
+        'ai-ring-delayed': 'ai-ring 1.4s ease-out 0.4s infinite',
+        'ai-fade': 'ai-fade 0.25s ease-out',
+        'ai-panel-in': 'ai-panel-in 0.28s ease-out',
+        'ai-fab-pulse': 'ai-fab-pulse 1.2s ease-in-out infinite',
+        'slide-up': 'slide-up 0.3s ease-out',
+        'fade-in': 'fade-in 0.22s ease-out',
+        'scale-in': 'scale-in 0.22s ease-out',
         shimmer: 'shimmer 1.5s ease-in-out infinite',
       },
       backgroundImage: {

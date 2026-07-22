@@ -21,7 +21,6 @@ function DesignsIcon({ className }: { className?: string }) {
   );
 }
 
-
 function TemplatesIcon({ className }: { className?: string }) {
   return (
     <svg className={className} width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -53,11 +52,11 @@ function PartnersIcon({ className }: { className?: string }) {
   );
 }
 
-const TABS: { id: LibraryTab; route: AppRouteId; label: string; hint: string; Icon: React.ComponentType<{ className?: string }> }[] = [
-  { id: 'designs', route: 'designs', label: 'Diseños', hint: 'Borradores', Icon: DesignsIcon },
-  { id: 'templates', route: 'templates', label: 'Templates', hint: 'Bases', Icon: TemplatesIcon },
-  { id: 'components', route: 'components', label: 'Componentes', hint: 'Publicados', Icon: ComponentsIcon },
-  { id: 'partners', route: 'partners', label: 'Partners', hint: 'Colaboradores', Icon: PartnersIcon },
+const TABS: { id: LibraryTab; route: AppRouteId; label: string; Icon: React.ComponentType<{ className?: string }> }[] = [
+  { id: 'designs', route: 'designs', label: 'Diseños', Icon: DesignsIcon },
+  { id: 'templates', route: 'templates', label: 'Templates', Icon: TemplatesIcon },
+  { id: 'components', route: 'components', label: 'Componentes', Icon: ComponentsIcon },
+  { id: 'partners', route: 'partners', label: 'Partners', Icon: PartnersIcon },
 ];
 
 interface LibraryShellProps {
@@ -89,11 +88,11 @@ export function LibraryShell({
       belowHero={
         <nav
           aria-label="Biblioteca"
-          className="mb-8 -mt-2 animate-slide-up"
+          className="mb-10 animate-slide-up"
           style={{ animationDelay: '40ms' }}
         >
           {/* Tab group with subtle container */}
-          <div className="inline-flex items-center gap-1 rounded-xl bg-surface-muted/60 p-1 border border-border/50">
+          <div className="inline-flex items-center gap-1 rounded-xl bg-surface-muted/40 p-1 border border-border/40">
             {TABS.map((tab) => {
               const isActive = tab.id === active;
               const { Icon } = tab;
@@ -102,7 +101,7 @@ export function LibraryShell({
                   key={tab.id}
                   to={tab.route}
                   className={cn(
-                    'relative flex items-center gap-2 rounded-lg px-4 py-2 transition-all duration-200',
+                    'relative flex items-center gap-2 rounded-lg px-5 py-2.5 transition-all duration-200',
                     isActive
                       ? 'bg-accent text-accent-foreground shadow-sm'
                       : 'text-content-secondary hover:bg-surface-elevated hover:text-content'
@@ -113,12 +112,6 @@ export function LibraryShell({
                     isActive ? 'text-accent-foreground' : 'text-content-muted'
                   )} />
                   <span className="text-sm font-medium">{tab.label}</span>
-                  <span className={cn(
-                    'text-[10px] transition-colors',
-                    isActive ? 'text-accent-foreground/70' : 'text-content-muted'
-                  )}>
-                    {tab.hint}
-                  </span>
                 </AppLink>
               );
             })}

@@ -22,15 +22,15 @@ export function ComponentsScreen() {
       }
     >
       {/* Stats row */}
-      <div className="mb-6 flex flex-wrap gap-3 animate-slide-up" style={{ animationDelay: '20ms' }}>
-        <div className="inline-flex items-center gap-2 rounded-xl border border-border/60 bg-surface px-4 py-2">
+      <div className="mb-8 flex flex-wrap gap-4 animate-slide-up" style={{ animationDelay: '20ms' }}>
+        <div className="inline-flex items-center gap-2 rounded-xl border border-border/40 bg-surface px-4 py-2">
           <span className="h-2 w-2 rounded-full bg-success" />
           <span className="text-xs text-content-secondary">
             <span className="font-semibold text-content">{publishedCount}</span> publicados
           </span>
         </div>
         {draftCount > 0 && (
-          <div className="inline-flex items-center gap-2 rounded-xl border border-border/60 bg-surface px-4 py-2">
+          <div className="inline-flex items-center gap-2 rounded-xl border border-border/40 bg-surface px-4 py-2">
             <span className="h-2 w-2 rounded-full bg-warning" />
             <span className="text-xs text-content-secondary">
               <span className="font-semibold text-content">{draftCount}</span> borradores

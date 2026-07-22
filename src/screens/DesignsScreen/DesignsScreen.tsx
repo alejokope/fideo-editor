@@ -18,7 +18,6 @@ function formatRelativeDate(dateStr: string): string {
   return `Hace ${Math.floor(diffDays / 30)} mes${diffDays >= 60 ? 'es' : ''}`
 }
 
-
 // ─── Search Input ────────────────────────────────────────────────────────────
 function SearchInput({ value, onChange }: { value: string; onChange: (v: string) => void }) {
   return (
@@ -41,8 +40,8 @@ function SearchInput({ value, onChange }: { value: string; onChange: (v: string)
         value={value}
         onChange={(e) => onChange(e.target.value)}
         className={cn(
-          'w-full rounded-xl border border-border bg-surface py-2.5 pl-10 pr-4',
-          'text-sm text-content placeholder:text-content-muted',
+          'w-full rounded-xl border border-border bg-surface py-3 pl-10 pr-4',
+          'text-sm text-content placeholder:text-content-muted placeholder:text-xs',
           'transition-all duration-200',
           'focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-1 focus:ring-offset-surface',
           'hover:border-accent-muted',
@@ -93,7 +92,7 @@ function DesignCard({ design, onDelete }: { design: Design; onDelete: (id: strin
         {/* "En uso" badge */}
         {design.inUse && (
           <div className="absolute left-3 top-3">
-            <span className="inline-flex items-center gap-1 rounded-full bg-success/90 px-2.5 py-1 text-[10px] font-semibold text-success-foreground backdrop-blur-sm">
+            <span className="inline-flex items-center gap-1 rounded-full bg-success/80 px-2.5 py-1 text-[10px] font-semibold text-success-foreground backdrop-blur-sm">
               <span className="h-1.5 w-1.5 rounded-full bg-success-foreground animate-pulse" />
               En uso
             </span>
@@ -119,7 +118,7 @@ function DesignCard({ design, onDelete }: { design: Design; onDelete: (id: strin
       </div>
 
       {/* Card info */}
-      <div className="flex flex-1 flex-col gap-1.5 p-3.5">
+      <div className="flex flex-1 flex-col gap-1.5 p-4">
         <div className="flex items-start justify-between gap-2">
           <h3 className="text-sm font-medium leading-tight text-content line-clamp-1">{design.name}</h3>
           <span className="shrink-0 text-[11px] text-content-muted">{formatRelativeDate(design.createdAt)}</span>
@@ -127,7 +126,7 @@ function DesignCard({ design, onDelete }: { design: Design; onDelete: (id: strin
         {design.tags.length > 0 && (
           <div className="flex flex-wrap gap-1.5">
             {design.tags.map((tag) => (
-              <span key={tag} className="rounded-md bg-surface-muted px-2 py-0.5 text-[10px] text-content-muted">
+              <span key={tag} className="rounded-md bg-surface-muted/60 px-2 py-0.5 text-[10px] text-content-muted">
                 {tag}
               </span>
             ))}
@@ -171,7 +170,7 @@ function SkeletonCard() {
   return (
     <div className="flex flex-col overflow-hidden rounded-2xl border border-border/60 bg-surface">
       <div className="aspect-[16/10] shimmer" />
-      <div className="flex flex-col gap-2 p-3.5">
+      <div className="flex flex-col gap-2 p-4">
         <div className="h-4 w-3/4 rounded-md shimmer" />
         <div className="flex gap-1.5">
           <div className="h-5 w-16 rounded-md shimmer" />
@@ -186,7 +185,7 @@ function SkeletonCard() {
 function DesignsGrid({ designs, loading, onDelete }: { designs: Design[]; loading: boolean; onDelete: (id: string) => void }) {
   if (loading) {
     return (
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {Array.from({ length: 6 }).map((_, i) => (
           <SkeletonCard key={i} />
         ))}
@@ -196,7 +195,7 @@ function DesignsGrid({ designs, loading, onDelete }: { designs: Design[]; loadin
 
   if (designs.length === 0) {
     return (
-      <div className="flex flex-col items-start border-t border-border py-14 text-center">
+      <div className="flex flex-col items-start border-t border-border py-16 text-center">
         <p className="text-lg font-medium tracking-tight text-content">No hay diseños</p>
         <p className="mt-2 max-w-md text-sm text-content-secondary">
           Crea tu primer diseño para empezar a construir tu biblioteca.
@@ -206,10 +205,10 @@ function DesignsGrid({ designs, loading, onDelete }: { designs: Design[]; loadin
   }
 
   return (
-    <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
       <NewDesignCard />
       {designs.map((design, i) => (
-        <div key={design.id} className="animate-slide-up" style={{ animationDelay: `${i * 50}ms` }}>
+        <div key={design.id} className="animate-slide-up" style={{ animationDelay: `${i * 30}ms` }}>
           <DesignCard design={design} onDelete={onDelete} />
         </div>
       ))}
@@ -217,7 +216,7 @@ function DesignsGrid({ designs, loading, onDelete }: { designs: Design[]; loadin
   )
 }
 
-// ─── DesignsScreen ───────────────────────────────────────────────────────────
+// ─── DesignsScreen ────────────────────────────────────────────────────────────
 export function DesignsScreen() {
   const { designs, loading, search, setSearch, deleteDesign } = useDesignStore()
 

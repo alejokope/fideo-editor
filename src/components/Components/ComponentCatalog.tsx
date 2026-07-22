@@ -1,6 +1,5 @@
 'use client'
 
-
 import { useState } from 'react'
 import { cn } from '@/lib/cn'
 import { useComponentStore, type Component } from '@/store/componentStore'
@@ -20,7 +19,7 @@ function SearchInput({ value, onChange }: { value: string; onChange: (v: string)
         value={value}
         onChange={(e) => onChange(e.target.value)}
         className={cn(
-          'w-full rounded-xl border border-border bg-surface py-2.5 pl-10 pr-4',
+          'w-full rounded-xl border border-border bg-surface py-3 pl-10 pr-4',
           'text-sm text-content placeholder:text-content-muted',
           'transition-all duration-200',
           'focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-1 focus:ring-offset-surface',
@@ -36,9 +35,9 @@ function ComponentRow({ component }: { component: Component }) {
   const [imgLoaded, setImgLoaded] = useState(false)
 
   return (
-    <div className="group flex items-center gap-4 rounded-xl border border-border/60 bg-surface px-4 py-3 transition-all duration-200 hover:border-accent-muted hover:shadow-panel">
+    <div className="group flex items-center gap-4 rounded-xl border border-border/60 bg-surface px-5 py-4 transition-all duration-200 hover:border-accent-muted hover:shadow-panel">
       {/* Preview thumbnail */}
-      <div className="relative h-14 w-20 shrink-0 overflow-hidden rounded-lg bg-surface-muted">
+      <div className="relative h-16 w-24 shrink-0 overflow-hidden rounded-lg bg-surface-muted">
         {!imgLoaded && <div className="absolute inset-0 shimmer" />}
         <img
           src={component.preview}
@@ -53,12 +52,12 @@ function ComponentRow({ component }: { component: Component }) {
         <div className="flex items-center gap-2">
           <h3 className="text-sm font-medium text-content">{component.name}</h3>
           {component.published ? (
-            <span className="inline-flex items-center gap-1 rounded-full bg-success/10 px-2 py-0.5 text-[10px] font-medium text-success">
+            <span className="inline-flex items-center gap-1 rounded-full bg-success/8 px-2 py-0.5 text-[10px] font-medium text-success">
               <span className="h-1 w-1 rounded-full bg-success" />
               Published
             </span>
           ) : (
-            <span className="inline-flex items-center gap-1 rounded-full bg-warning/10 px-2 py-0.5 text-[10px] font-medium text-warning">
+            <span className="inline-flex items-center gap-1 rounded-full bg-warning/8 px-2 py-0.5 text-[10px] font-medium text-warning">
               Draft
             </span>
           )}
@@ -102,8 +101,8 @@ function ComponentRow({ component }: { component: Component }) {
 // ─── Skeleton Row ─────────────────────────────────────────────────────────────
 function SkeletonRow() {
   return (
-    <div className="flex items-center gap-4 rounded-xl border border-border/60 bg-surface px-4 py-3">
-      <div className="h-14 w-20 shrink-0 rounded-lg shimmer" />
+    <div className="flex items-center gap-4 rounded-xl border border-border/60 bg-surface px-5 py-4">
+      <div className="h-16 w-24 shrink-0 rounded-lg shimmer" />
       <div className="flex-1 space-y-1.5">
         <div className="h-3.5 w-40 rounded-md shimmer" />
         <div className="h-3 w-64 rounded-md shimmer" />
@@ -117,7 +116,6 @@ function SkeletonRow() {
 // ─── ComponentCatalog ────────────────────────────────────────────────────────
 export function ComponentCatalog() {
   const { components, loading, search, setSearch } = useComponentStore()
-
 
   const filtered = components.filter(
     (c) =>
@@ -134,7 +132,7 @@ export function ComponentCatalog() {
       </div>
 
       {/* Table header — only visible on larger screens */}
-      <div className="hidden grid-cols-[20rem_1fr_8rem_6rem_auto] items-center gap-4 px-4 text-[11px] font-semibold tracking-wide text-content-muted uppercase md:grid">
+      <div className="hidden grid-cols-[20rem_1fr_8rem_6rem_auto] items-center gap-4 px-5 text-[11px] font-semibold tracking-wide text-content-muted/70 uppercase md:grid">
         <span>Componente</span>
         <span>Descripción</span>
         <span>Categoría</span>
@@ -142,9 +140,8 @@ export function ComponentCatalog() {
         <span className="text-right">Acciones</span>
       </div>
 
-
       {/* Rows */}
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-3">
         {loading
           ? Array.from({ length: 6 }).map((_, i) => <SkeletonRow key={i} />)
           : filtered.length === 0

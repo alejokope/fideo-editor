@@ -50,6 +50,7 @@
   html {
     @apply antialiased;
   }
+
   body {
     @apply bg-surface text-content;
   }
@@ -64,6 +65,7 @@
     scrollbar-width: thin;
     scrollbar-color: rgb(var(--border)) transparent;
   }
+
 
   .glass {
     background-color: rgb(var(--surface) / 0.75);

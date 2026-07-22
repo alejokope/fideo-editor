@@ -53,12 +53,11 @@ export function PageShell({
   const user = useAuthStore((s) => s.user);
   const logout = useAuthStore((s) => s.logout);
   const widthClass = maxWidth === '3xl' ? 'max-w-3xl' : 'max-w-5xl';
-
   return (
     <div className="relative flex min-h-screen flex-col overflow-hidden bg-surface font-sans text-content">
       {/* Subtle grid background */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.35] dark:opacity-20"
+        className="pointer-events-none absolute inset-0 opacity-[0.12] dark:opacity-[0.06]"
         aria-hidden
         style={{
           backgroundImage: `
@@ -72,13 +71,13 @@ export function PageShell({
       />
       {/* Refined top gradient */}
       <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-[18rem] bg-gradient-to-b from-accent-muted/40 via-surface/20 to-transparent dark:from-accent-muted/15"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[18rem] bg-gradient-to-b from-accent-muted/20 via-surface/20 to-transparent dark:from-accent-muted/10"
         aria-hidden
       />
 
       {/* Glassmorphism header */}
-      <header className="relative z-10 glass border-b border-border/50">
-        <div className="mx-auto flex items-center justify-between px-6 py-3 sm:px-10 lg:px-12">
+      <header className="relative z-10 glass border-b border-border/40">
+        <div className="mx-auto flex items-center justify-between px-6 py-4 sm:px-10 lg:px-12">
           {/* Left: Logo + Breadcrumb */}
           <div className="flex items-center gap-3">
             <AppLink
@@ -113,12 +112,12 @@ export function PageShell({
       {/* Main content area */}
       <div
         className={cn(
-          'relative z-10 mx-auto flex w-full flex-1 flex-col px-6 pb-20 sm:px-10 lg:px-12',
+          'relative z-10 mx-auto flex w-full flex-1 flex-col px-6 pb-24 sm:px-10 lg:px-12',
           widthClass
         )}
       >
         {/* Hero section */}
-        <section className="mb-8 animate-slide-up sm:mb-10">
+        <section className="mb-10 animate-slide-up sm:mb-12">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div className="min-w-0 max-w-xl">
               {storageBadge && (
@@ -164,7 +163,7 @@ interface PageEmptyProps {
 /** Estado vacío alineado con la home. */
 export function PageEmpty({ title, body, children }: PageEmptyProps) {
   return (
-    <div className="flex flex-col items-start border-t border-border py-14 sm:py-16">
+    <div className="flex flex-col items-start border-t border-border py-16 sm:py-20">
       <p className="text-lg font-medium tracking-tight text-content">{title}</p>
       <p className="mt-2 max-w-md text-sm leading-relaxed text-content-secondary">{body}</p>
       {children && <div className="mt-6 flex flex-wrap gap-3">{children}</div>}
@@ -180,7 +179,7 @@ interface PageSectionHeadProps {
 export function PageSectionHead({ label, hint }: PageSectionHeadProps) {
   return (
     <div className="mb-4 flex items-baseline justify-between gap-3">
-      <h2 className="text-[11px] font-semibold tracking-[0.16em] text-content-muted uppercase">
+      <h2 className="text-[11px] font-medium tracking-[0.2em] text-content-tertiary uppercase">
         {label}
       </h2>
       {hint && <p className="text-[11px] text-content-muted">{hint}</p>}

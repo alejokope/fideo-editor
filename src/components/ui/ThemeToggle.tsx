@@ -1,11 +1,11 @@
 'use client';
 
-
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/cn';
 
 export function ThemeToggle({ className }: { className?: string }) {
   const [dark, setDark] = useState(false);
+
 
   useEffect(() => {
     setDark(document.documentElement.classList.contains('dark'));
@@ -16,6 +16,7 @@ export function ThemeToggle({ className }: { className?: string }) {
     setDark(next);
     document.documentElement.classList.toggle('dark', next);
   };
+
 
   return (
     <button

@@ -3,24 +3,21 @@ import type { ButtonHTMLAttributes } from 'react';
 
 type ButtonVariant = 'default' | 'ghost' | 'outline' | 'danger';
 type ButtonSize = 'sm' | 'md' | 'lg';
-
-
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   size?: ButtonSize;
 }
 
-
 const variantClasses: Record<ButtonVariant, string> = {
-  default: 'bg-accent text-accent-foreground hover:brightness-110',
-  ghost: 'bg-transparent text-content-secondary hover:bg-surface-muted hover:text-content',
-  outline: 'border border-border bg-surface text-content hover:bg-surface-muted',
-  danger: 'bg-danger text-danger-foreground hover:brightness-110',
+  default: 'bg-accent text-accent-foreground hover:brightness-105 active:scale-[0.98]',
+  ghost: 'bg-transparent text-content-secondary hover:bg-surface-muted hover:text-content active:scale-[0.98]',
+  outline: 'border border-border bg-surface text-content hover:bg-surface-muted active:scale-[0.98]',
+  danger: 'bg-danger text-danger-foreground hover:brightness-105 active:scale-[0.98]',
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
-  sm: 'h-8 px-3 text-xs rounded-lg',
-  md: 'h-10 px-4 text-sm rounded-xl',
+  sm: 'h-9 px-3 text-xs rounded-lg',
+  md: 'h-11 px-4 text-sm rounded-xl',
   lg: 'h-12 px-6 text-base rounded-xl',
 };
 
